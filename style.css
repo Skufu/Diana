@@ -1007,18 +1007,29 @@ body::after {
 }
 
 .sidebar-header {
-  padding: var(--space-24);
-  border-bottom: 1px solid var(--sparkle-silver);
+  margin: var(--space-16);
+  padding: var(--space-16);
+  border: 1px solid rgba(135, 206, 235, 0.6);
+  border-radius: var(--radius-base);
+  background: rgba(30, 58, 95, 0.5);
   position: relative;
   z-index: 2;
+  box-shadow: 
+    0 0 20px rgba(74, 144, 226, 0.6),
+    0 0 40px rgba(74, 144, 226, 0.4),
+    0 0 60px rgba(74, 144, 226, 0.2),
+    inset 0 0 20px rgba(135, 206, 235, 0.1);
 }
 
 .sidebar-header h2 {
   color: var(--sparkle-white);
   font-size: var(--font-size-3xl);
   margin: 0;
+  text-align: center;
   text-shadow: 0 0 10px var(--sparkle-glow);
   animation: glitter 4s infinite;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
 }
 
 .sidebar-menu {
