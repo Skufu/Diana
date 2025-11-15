@@ -1,11 +1,11 @@
 // Application Data
 const appData = {
   participants: [
-    {"id": 1, "name": "Maria Santos", "age": 52, "bmi": 28.5, "menopauseStatus": "Post-menopause", "yearsSinceMenopause": 3, "bloodPressure": "140/90", "glucose": 105, "physicalActivity": "Moderate", "smokingStatus": "Never", "riskScore": 0.72},
-    {"id": 2, "name": "Ana Rodriguez", "age": 48, "bmi": 24.2, "menopauseStatus": "Peri-menopause", "yearsSinceMenopause": 0, "bloodPressure": "125/80", "glucose": 92, "physicalActivity": "High", "smokingStatus": "Former", "riskScore": 0.34},
-    {"id": 3, "name": "Carmen Lopez", "age": 58, "bmi": 31.8, "menopauseStatus": "Post-menopause", "yearsSinceMenopause": 8, "bloodPressure": "155/95", "glucose": 118, "physicalActivity": "Low", "smokingStatus": "Current", "riskScore": 0.89},
-    {"id": 4, "name": "Rosa Garcia", "age": 45, "bmi": 26.1, "menopauseStatus": "Pre-menopause", "yearsSinceMenopause": 0, "bloodPressure": "118/75", "glucose": 88, "physicalActivity": "Moderate", "smokingStatus": "Never", "riskScore": 0.28},
-    {"id": 5, "name": "Elena Morales", "age": 62, "bmi": 29.4, "menopauseStatus": "Post-menopause", "yearsSinceMenopause": 12, "bloodPressure": "145/88", "glucose": 112, "physicalActivity": "Low", "smokingStatus": "Former", "riskScore": 0.78}
+    {"id": 1, "name": "Maria Santos", "age": 52, "bmi": 28.5, "menopauseStatus": "Post-menopause", "yearsSinceMenopause": 3, "bloodPressure": "140/90", "glucose": 105, "hba1c": 6.2, "triglycerides": 165, "totalCholesterol": 215, "ldlCholesterol": 135, "hdlCholesterol": 42, "familyHistory": "Yes", "physicalActivity": "Moderate", "smokingStatus": "Never", "riskScore": 0.72},
+    {"id": 2, "name": "Ana Rodriguez", "age": 48, "bmi": 24.2, "menopauseStatus": "Peri-menopause", "yearsSinceMenopause": 0, "bloodPressure": "125/80", "glucose": 92, "hba1c": 5.8, "triglycerides": 120, "totalCholesterol": 185, "ldlCholesterol": 95, "hdlCholesterol": 55, "familyHistory": "No", "physicalActivity": "High", "smokingStatus": "Former", "riskScore": 0.34},
+    {"id": 3, "name": "Carmen Lopez", "age": 58, "bmi": 31.8, "menopauseStatus": "Post-menopause", "yearsSinceMenopause": 8, "bloodPressure": "155/95", "glucose": 118, "hba1c": 7.1, "triglycerides": 195, "totalCholesterol": 245, "ldlCholesterol": 155, "hdlCholesterol": 38, "familyHistory": "Yes", "physicalActivity": "Low", "smokingStatus": "Current", "riskScore": 0.89},
+    {"id": 4, "name": "Rosa Garcia", "age": 45, "bmi": 26.1, "menopauseStatus": "Pre-menopause", "yearsSinceMenopause": 0, "bloodPressure": "118/75", "glucose": 88, "hba1c": 5.4, "triglycerides": 105, "totalCholesterol": 175, "ldlCholesterol": 85, "hdlCholesterol": 60, "familyHistory": "No", "physicalActivity": "Moderate", "smokingStatus": "Never", "riskScore": 0.28},
+    {"id": 5, "name": "Elena Morales", "age": 62, "bmi": 29.4, "menopauseStatus": "Post-menopause", "yearsSinceMenopause": 12, "bloodPressure": "145/88", "glucose": 112, "hba1c": 6.5, "triglycerides": 180, "totalCholesterol": 220, "ldlCholesterol": 140, "hdlCholesterol": 45, "familyHistory": "Yes", "physicalActivity": "Low", "smokingStatus": "Former", "riskScore": 0.78}
   ],
   ageDistribution: [
     {"ageRange": "40-44", "count": 8},
@@ -557,6 +557,12 @@ function initializeParticipantForm() {
         yearsSinceMenopause: parseInt(participantData['years-since-menopause']) || 0,
         bloodPressure: `${participantData['systolic-bp']}/${participantData['diastolic-bp']}`,
         glucose: parseInt(participantData['glucose']),
+        hba1c: parseFloat(participantData['hba1c']),
+        triglycerides: parseInt(participantData['triglycerides']),
+        totalCholesterol: parseInt(participantData['total-cholesterol']),
+        ldlCholesterol: parseInt(participantData['ldl-cholesterol']),
+        hdlCholesterol: parseInt(participantData['hdl-cholesterol']),
+        familyHistory: participantData['family-history'],
         physicalActivity: participantData['physical-activity'],
         smokingStatus: participantData['smoking-status'],
         riskScore: Math.random() * 0.8 + 0.1 // Random risk score for demo
@@ -589,6 +595,13 @@ function updateFormProgress() {
   const smokingRadios = form.querySelectorAll('input[name="smoking-status"]');
   const smokingChecked = Array.from(smokingRadios).some(radio => radio.checked);
   if (smokingChecked) {
+    filledInputs++;
+  }
+  totalInputs++;
+  
+  const familyHistoryRadios = form.querySelectorAll('input[name="family-history"]');
+  const familyHistoryChecked = Array.from(familyHistoryRadios).some(radio => radio.checked);
+  if (familyHistoryChecked) {
     filledInputs++;
   }
   totalInputs++;

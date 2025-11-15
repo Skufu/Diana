@@ -1236,6 +1236,14 @@ body::after {
   text-shadow: 0 0 3px var(--sparkle-shadow);
 }
 
+.chart-subtitle {
+  font-size: 0.9rem;
+  color: #6bb6ff;
+  margin-top: -8px;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
 /* Form Controls with Blue Sparkly Theme */
 .form-control {
   display: block;
